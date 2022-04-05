@@ -1,0 +1,452 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
+import 'package:flutter/material.dart';
+
+// ignore_for_file: prefer_const_constructors
+class Calendar extends StatefulWidget {
+  const Calendar({Key? key}) : super(key: key);
+
+  @override
+  _CalendarState createState() => _CalendarState();
+}
+
+class _CalendarState extends State<Calendar> {
+  DateTime selectedDate = DateTime.now();
+
+  int currentDateSelectedIndex = 0;
+  ScrollController scrollController = ScrollController();
+
+  List<String> listOfMonths = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec"
+  ];
+
+  List<String> listOfDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+                height: 40,
+                margin: EdgeInsets.only(left: 30),
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  selectedDate.day.toString() +
+                      '-' +
+                      listOfMonths[selectedDate.month - 1] +
+                      ', ' +
+                      selectedDate.year.toString(),
+                  style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.w800,
+                      color: Colors.indigo[700]),
+                )),
+            SizedBox(height: 10),
+            SizedBox(
+              height: 135,
+              child: ListView.separated(
+                separatorBuilder: (BuildContext context, int index) {
+                  return SizedBox(width: 10);
+                },
+                itemCount: 365,
+                controller: scrollController,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (BuildContext context, int index) {
+                  return InkWell(
+                    onTap: () {
+                      setState(() {
+                        currentDateSelectedIndex = index;
+                        selectedDate =
+                            DateTime.now().add(Duration(days: index));
+                      });
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Container(
+                        height: 120,
+                        width: 90,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey,
+                                  offset: Offset(0, 0),
+                                  blurRadius: 5)
+                            ],
+                            color: currentDateSelectedIndex == index
+                                ? Colors.blueAccent
+                                : Colors.white),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              listOfMonths[DateTime.now()
+                                          .add(Duration(days: index))
+                                          .month -
+                                      1]
+                                  .toString(),
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: currentDateSelectedIndex == index
+                                      ? Colors.white
+                                      : Colors.grey),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              DateTime.now()
+                                  .add(Duration(days: index))
+                                  .day
+                                  .toString(),
+                              style: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w700,
+                                  color: currentDateSelectedIndex == index
+                                      ? Colors.white
+                                      : Colors.grey),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              listOfDays[DateTime.now()
+                                          .add(Duration(days: index))
+                                          .weekday -
+                                      1]
+                                  .toString(),
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: currentDateSelectedIndex == index
+                                      ? Colors.white
+                                      : Colors.grey),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Center(
+              child: Text(
+                "Attendance",
+                style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.w800,
+                    color: Colors.indigo[700]),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade300,
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                ),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 20),
+                            child: Container(
+                              width: 100,
+                              height: 90,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    Colors.indigo.shade800,
+                                    Colors.blue.shade500,
+                                  ],
+                                ),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                              ),
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    "Presents",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Divider(
+                                    color: Colors.white,
+                                    height: 18,
+                                    thickness: 2,
+                                    indent: 10,
+                                    endIndent: 10,
+                                  ),
+                                  Text(
+                                    "0 days",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Spacer(),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 20),
+                            child: Container(
+                              width: 100,
+                              height: 90,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    Colors.indigo.shade800,
+                                    Colors.blue.shade500,
+                                  ],
+                                ),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                              ),
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    "Absents",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Divider(
+                                    color: Colors.white,
+                                    height: 18,
+                                    thickness: 2,
+                                    indent: 10,
+                                    endIndent: 10,
+                                  ),
+                                  Text(
+                                    "0 days",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Spacer(),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 20),
+                            child: Container(
+                              width: 100,
+                              height: 90,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    Colors.indigo.shade800,
+                                    Colors.blue.shade500,
+                                  ],
+                                ),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                              ),
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    "Leaves",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Divider(
+                                    color: Colors.white,
+                                    height: 18,
+                                    thickness: 2,
+                                    indent: 10,
+                                    endIndent: 10,
+                                  ),
+                                  Text(
+                                    "0 days",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.blue,
+                      height: 18,
+                      thickness: 2,
+                      indent: 10,
+                      endIndent: 10,
+                    ),
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 20),
+                                child: Container(
+                                  width: 100,
+                                  height: 90,
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                      colors: [
+                                        Colors.indigo.shade800,
+                                        Colors.blue.shade500,
+                                      ],
+                                    ),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Text(
+                                        "Total Days",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Divider(
+                                        color: Colors.white,
+                                        height: 18,
+                                        thickness: 2,
+                                        indent: 10,
+                                        endIndent: 10,
+                                      ),
+                                      Text(
+                                        "30 days",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 20),
+                                child: Container(
+                                  width: 100,
+                                  height: 90,
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                      colors: [
+                                        Colors.indigo.shade800,
+                                        Colors.blue.shade500,
+                                      ],
+                                    ),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      SizedBox(
+                                        height: 15,
+                                      ),
+                                      Text(
+                                        "Holidays",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Divider(
+                                        color: Colors.white,
+                                        height: 18,
+                                        thickness: 2,
+                                        indent: 10,
+                                        endIndent: 10,
+                                      ),
+                                      Text(
+                                        "4 days",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Spacer(),
+                        Image.asset(
+                          "assets/images/piechart.png",
+                          width: 185,
+                          height: 185,
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
