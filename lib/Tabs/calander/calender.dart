@@ -197,12 +197,12 @@ class _CalendarState extends State<Calendar> {
                                     "Presents",
                                     style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 20,
+                                        fontSize: 16,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Divider(
                                     color: Colors.white,
-                                    height: 18,
+                                    height: 16,
                                     thickness: 2,
                                     indent: 10,
                                     endIndent: 10,
@@ -245,12 +245,12 @@ class _CalendarState extends State<Calendar> {
                                     "Absents",
                                     style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 20,
+                                        fontSize: 16,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Divider(
                                     color: Colors.white,
-                                    height: 18,
+                                    height: 16,
                                     thickness: 2,
                                     indent: 10,
                                     endIndent: 10,
@@ -290,15 +290,15 @@ class _CalendarState extends State<Calendar> {
                                     height: 10,
                                   ),
                                   Text(
-                                    "Leaves",
+                                    "leaves",
                                     style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 20,
+                                        fontSize: 16,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Divider(
                                     color: Colors.white,
-                                    height: 18,
+                                    height: 16,
                                     thickness: 2,
                                     indent: 10,
                                     endIndent: 10,
@@ -319,7 +319,7 @@ class _CalendarState extends State<Calendar> {
                     ),
                     Divider(
                       color: Colors.blue,
-                      height: 18,
+                      height: 16,
                       thickness: 2,
                       indent: 10,
                       endIndent: 10,
@@ -354,15 +354,15 @@ class _CalendarState extends State<Calendar> {
                                         height: 10,
                                       ),
                                       Text(
-                                        "Total Days",
+                                        "Total Days",textAlign: TextAlign.center,
                                         style: TextStyle(
                                             color: Colors.white,
-                                            fontSize: 18,
+                                            fontSize: 16,
                                             fontWeight: FontWeight.bold),
                                       ),
                                       Divider(
                                         color: Colors.white,
-                                        height: 18,
+                                        height: 16,
                                         thickness: 2,
                                         indent: 10,
                                         endIndent: 10,
@@ -405,12 +405,12 @@ class _CalendarState extends State<Calendar> {
                                         "Holidays",
                                         style: TextStyle(
                                             color: Colors.white,
-                                            fontSize: 20,
+                                            fontSize: 16,
                                             fontWeight: FontWeight.bold),
                                       ),
                                       Divider(
                                         color: Colors.white,
-                                        height: 18,
+                                        height: 16,
                                         thickness: 2,
                                         indent: 10,
                                         endIndent: 10,
@@ -432,8 +432,8 @@ class _CalendarState extends State<Calendar> {
                         Spacer(),
                         Image.asset(
                           "assets/images/piechart.png",
-                          width: 185,
-                          height: 185,
+                          width: 165,
+                          height: 165,
                         ),
                         SizedBox(
                           width: 20,

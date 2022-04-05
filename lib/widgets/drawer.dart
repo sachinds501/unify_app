@@ -14,23 +14,29 @@ class MyDrawer extends StatelessWidget {
     final imageUrl =
         "https://w7.pngwing.com/pngs/971/990/png-transparent-computer-icons-login-person-user-pessoa-smiley-desktop-wallpaper-address-icon.png";
     return Container(
-      width: MediaQuery.of(context).size.width * 0.7,
+      width: MediaQuery.of(context).size.width * 0.6,
       child: Drawer(
         child: Container(
-          color: Colors.blue,
+          color: Color.fromARGB(255, 25, 116, 190),
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
               DrawerHeader(
                 padding: EdgeInsets.symmetric(horizontal: 10),
                 child: UserAccountsDrawerHeader(
+                    arrowColor: Color.fromARGB(255, 25, 116, 190),
                     margin: EdgeInsets.zero,
-                    accountName: Text("${user!.displayName}"),
+                    accountName: Text("Sachin"),
                     accountEmail: Text("${user!.email}"),
                     currentAccountPicture:
                         CircleAvatar(backgroundImage: NetworkImage(imageUrl)),
                     onDetailsPressed: () => Navigator.pushNamed(
                         context, MyRoutes.userProfileroutes)),
+              ),
+              Divider(
+                color: Colors.black,
+                indent: 10, // empty space to the leading edge of divider.
+                endIndent: 10,
               ),
               ListTile(
                 leading: Icon(
@@ -38,10 +44,15 @@ class MyDrawer extends StatelessWidget {
                   color: Colors.white,
                 ),
                 title: Text("Home",
-                    textScaleFactor: 1.4,
+                    textScaleFactor: 1.2,
                     style: TextStyle(
                       color: Colors.white,
                     )),
+              ),
+              Divider(
+                color: Colors.black,
+                indent: 10, // empty space to the leading edge of divider.
+                endIndent: 10,
               ),
               ListTile(
                 leading: Icon(
@@ -49,7 +60,7 @@ class MyDrawer extends StatelessWidget {
                   color: Colors.white,
                 ),
                 title: Text("Notice Board",
-                    textScaleFactor: 1.4,
+                    textScaleFactor: 1.2,
                     style: TextStyle(
                       color: Colors.white,
                     )),
@@ -62,7 +73,7 @@ class MyDrawer extends StatelessWidget {
                   color: Colors.white,
                 ),
                 title: Text("Assignment",
-                    textScaleFactor: 1.4,
+                    textScaleFactor: 1.2,
                     style: TextStyle(
                       color: Colors.white,
                     )),
@@ -75,7 +86,7 @@ class MyDrawer extends StatelessWidget {
                   color: Colors.white,
                 ),
                 title: Text("Polling",
-                    textScaleFactor: 1.4,
+                    textScaleFactor: 1.2,
                     style: TextStyle(
                       color: Colors.white,
                     )),
@@ -88,12 +99,17 @@ class MyDrawer extends StatelessWidget {
                   color: Colors.white,
                 ),
                 title: Text("Syllabus",
-                    textScaleFactor: 1.4,
+                    textScaleFactor: 1.2,
                     style: TextStyle(
                       color: Colors.white,
                     )),
                 onTap: () =>
                     Navigator.pushNamed(context, MyRoutes.syllabusroutes),
+              ),
+              Divider(
+                color: Colors.black,
+                indent: 10, // empty space to the leading edge of divider.
+                endIndent: 10,
               ),
               ListTile(
                 leading: Icon(
@@ -101,7 +117,7 @@ class MyDrawer extends StatelessWidget {
                   color: Colors.white,
                 ),
                 title: Text("Settings",
-                    textScaleFactor: 1.4,
+                    textScaleFactor: 1.2,
                     style: TextStyle(
                       color: Colors.white,
                     )),
@@ -114,7 +130,7 @@ class MyDrawer extends StatelessWidget {
                     color: Colors.white,
                   ),
                   title: Text("Logout",
-                      textScaleFactor: 1.4,
+                      textScaleFactor: 1.2,
                       style: TextStyle(
                         color: Colors.white,
                       )),
@@ -122,6 +138,11 @@ class MyDrawer extends StatelessWidget {
                     Navigator.pushNamed(context, MyRoutes.loginroutes);
                     _signingOut();
                   }),
+                  Divider(
+                color: Colors.black,
+                indent: 10, // empty space to the leading edge of divider.
+                endIndent: 10,
+              ),
             ],
           ),
         ),

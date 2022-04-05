@@ -79,6 +79,7 @@ class _ChatRoomState extends State<ChatRoom> {
 
   AppBar buildAppBar() {
     return AppBar(
+      backgroundColor: Color.fromARGB(255, 25, 116, 190),
       automaticallyImplyLeading: false,
       title: Row(
         children: [

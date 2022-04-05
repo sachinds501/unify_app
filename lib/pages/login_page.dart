@@ -3,9 +3,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:unify_app/pages/main_page.dart';
 import 'package:unify_app/utils/routes.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 // import 'main_page.dart';
 // ignore_for_file: prefer_const_constructors
@@ -30,39 +32,45 @@ class _LoginPageState extends State<LoginPage> {
           key: _formKey,
           child: Column(
             children: [
-              Image.asset("assets/images/login.gif"),
+              Image.asset(
+                "assets/images/login.gif",
+              ),
               Center(
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.blue,
+                    color: Color.fromARGB(255, 25, 116, 190),
                     borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(40),
-                        bottomRight: Radius.circular(40)),
-                    boxShadow: [
-                      //BoxShadow
-                      BoxShadow(
-                        color: Color.fromARGB(255, 58, 156, 236),
-                        offset: const Offset(0.0, 5.0),
-                        blurRadius: 10.0,
-                        spreadRadius: 3.0,
-                      ), //BoxShadow
-                    ],
+                        bottomLeft: Radius.circular(20),
+                        bottomRight: Radius.circular(20)),
                   ),
                   width: 200,
                   height: 70,
                   child: Center(
                     child: Text(
-                      "Welcome",
-                      style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                      "Welcome to",
+                      style: GoogleFonts.robotoMono(
+                        textStyle: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
                     ),
                   ),
                 ),
               ),
               SizedBox(
-                height: 100,
+                height: 20,
+              ),
+              Image.asset(
+                "assets/images/AppIcon.png",
+                height: 70,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              _typer(),
+              SizedBox(
+                height: 40,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 32),
@@ -81,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                               padding: EdgeInsets.all(10.0),
                               child: Icon(
                                 Icons.mail,
-                                color: Colors.black,
+                                color: Color.fromARGB(255, 25, 116, 190),
                               ),
                             ),
                             labelText: 'Username',
@@ -106,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                                 padding: EdgeInsets.all(10.0),
                                 child: Icon(
                                   Icons.lock,
-                                  color: Colors.black,
+                                  color: Color.fromARGB(255, 25, 116, 190),
                                 ),
                               ),
                               labelText: 'Password',
@@ -130,7 +138,6 @@ class _LoginPageState extends State<LoginPage> {
                             "Forgot Password?",
                             style: TextStyle(
                               fontSize: 16,
-                              fontWeight: FontWeight.bold,
                             ),
                           ),
                           onPressed: () => Navigator.pushNamed(
@@ -141,7 +148,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         ElevatedButton.icon(
                           style: ElevatedButton.styleFrom(
-                              primary: Colors.blueAccent[700],
+                              primary: Color.fromARGB(255, 25, 116, 190),
                               onPrimary: Colors.white,
                               minimumSize: Size(200, 45),
                               shape: RoundedRectangleBorder(
@@ -161,7 +168,7 @@ class _LoginPageState extends State<LoginPage> {
                           },
                           label: const Text(
                             'Login',
-                            style: TextStyle(fontSize: 16),
+                            style: TextStyle(fontSize: 18),
                           ),
                         ),
                         SizedBox(
@@ -175,21 +182,23 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 height: 152,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Team VSR x",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    "2021",
-                    style: TextStyle(color: Colors.blue, fontSize: 15),
-                  ),
-                ],
+              RichText(
+                text: const TextSpan(
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: "Team VSR x",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15)),
+                    TextSpan(
+                        text: '2021',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 25, 116, 190),
+                            fontSize: 15)),
+                  ],
+                ),
               ),
               SizedBox(
                 height: 10,
@@ -274,5 +283,31 @@ class _LoginPageState extends State<LoginPage> {
       print("Sign in not successful !");
       // better show an alert here
     }
+  }
+
+  Widget _typer() {
+    return SizedBox(
+      width: 280.0,
+      child: DefaultTextStyle(
+        style: GoogleFonts.robotoMono(
+          textStyle: TextStyle(
+            fontSize: 20.0,
+            color: Color.fromARGB(255, 71, 55, 55),
+          ),
+        ),
+        child: AnimatedTextKit(isRepeatingAnimation: true, animatedTexts: [
+          // TyperAnimatedText('Welcome to Unify app,',
+          //     speed: Duration(milliseconds: 100)),
+          TyperAnimatedText('Login with your institute credentials into,',
+              speed: Duration(milliseconds: 100)),
+          TyperAnimatedText('The finest medium of interaction between,',
+              speed: Duration(milliseconds: 100)),
+          TyperAnimatedText('Faculty and Students,',
+              speed: Duration(milliseconds: 100)),
+          TyperAnimatedText('with multi features app, "Unify".',
+              speed: Duration(milliseconds: 100)),
+        ]),
+      ),
+    );
   }
 }

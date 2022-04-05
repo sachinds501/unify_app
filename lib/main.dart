@@ -1,5 +1,6 @@
 // ignore_for_file: unused_import, prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:unify_app/Tabs/Query/ask_query.dart';
 import 'package:unify_app/Tabs/Query/list_query.dart';
 import 'package:unify_app/Tabs/Query/query_submitted.dart';
@@ -36,7 +37,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
         themeMode: ThemeMode.light,
         debugShowCheckedModeBanner: false,
-        theme: lightThemeData(context),
+        theme: ThemeData(
+          textTheme: GoogleFonts.robotoMonoTextTheme(
+            Theme.of(context).textTheme,
+          ),
+        ),
         darkTheme: darkThemeData(context),
         initialRoute: MyRoutes.splashroutes,
         home: Calendar(),

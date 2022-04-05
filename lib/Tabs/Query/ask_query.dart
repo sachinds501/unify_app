@@ -77,7 +77,7 @@ class _AskQueryState extends State<AskQuery> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.cyanAccent[100],
+      backgroundColor: Color.fromARGB(255, 28, 125, 204),
       appBar: appBar(),
       body: Padding(
         padding: const EdgeInsets.all(13.0),
@@ -137,10 +137,14 @@ class _AskQueryState extends State<AskQuery> {
                         color: Colors.orange[100],
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(5.0),
+                        padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10),
                         child: Column(
                           children: [
                             titleE(),
+                            Divider(
+                              color: Colors.black,
+                              // empty space to the leading edge of divider.
+                            ),
                             noteDescription(context),
                           ],
                         ),
@@ -219,7 +223,7 @@ class _AskQueryState extends State<AskQuery> {
           errorBorder:
               OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
           filled: true,
-          icon: Icon(Icons.contacts),
+          icon: Icon(Icons.contacts,color: Color.fromARGB(255, 25, 116, 190),),
           hintText: 'Eg. 20DCS005, 20DIT051, etc.',
           labelText: 'Student ID *',
         ),
@@ -243,7 +247,7 @@ class _AskQueryState extends State<AskQuery> {
           errorBorder:
               OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
           filled: true,
-          icon: Icon(Icons.person),
+          icon: Icon(Icons.person, color :Color.fromARGB(255, 25, 116, 190)),
           hintText: 'What do people call you?',
           labelText: 'Name *',
         ),
@@ -267,7 +271,7 @@ class _AskQueryState extends State<AskQuery> {
         errorBorder:
             OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
         filled: true,
-        icon: Icon(Icons.mail_outline),
+        icon: Icon(Icons.mail_outline,color: Color.fromARGB(255, 25, 116, 190)),
         labelText: 'Email *',
       ),
       onSaved: (String? value) {
@@ -285,7 +289,7 @@ class _AskQueryState extends State<AskQuery> {
           errorBorder:
               OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
           filled: true,
-          icon: Icon(Icons.phone),
+          icon: Icon(Icons.phone, color:Color.fromARGB(255, 25, 116, 190)),
           hintText: ' Enter your Mobile No.',
           labelText: 'Phone Number *',
           prefixText: '+91',
@@ -317,7 +321,7 @@ class _AskQueryState extends State<AskQuery> {
       child: ElevatedButton.icon(
         style: ElevatedButton.styleFrom(
             minimumSize: Size(150, 45),
-            primary: Colors.orange[900],
+            primary: Color.fromARGB(255, 25, 116, 190),
             onPrimary: Colors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(25.0),
@@ -377,7 +381,7 @@ class _AskQueryState extends State<AskQuery> {
         style: TextStyle(
           fontSize: 20.0,
           fontFamily: "lato",
-          color: Colors.grey[800],
+          color: Color.fromARGB(255, 153, 144, 144),
         ),
         onChanged: (_val) {
           description = _val;
