@@ -19,7 +19,9 @@ This project is a starting point for a Flutter application.
 ## Tabs
 
 -**Chat** : In chat tab student can talk with their faculties, as well as their friends. They can create group with friends(*Collage only*).
+
 -**Calendar** : Calendar tab will show the dates,day absent, present, leaves of the logged student and faculty.
+
 -**Queries** : In query tab student can ask thier query to the faculty and for each asked query a card(flutter) is created. Student can directly submit thier query to the faculty member they want. They can also re-edit the query.
 
 ## Frontend
