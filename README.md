@@ -28,9 +28,9 @@ This project is a starting point for a Flutter application.
 **Flutter dart**
 
 ## Backend
-**Google Firebase**
+**Google Firebase(Currently in Query and User Profile section)**
 
-**Here i am providing you the [drive link](https://drive.google.com/drive/folders/1lk7IxXvTRhcsiVv5RqBzs6TF0IgeXP5G?usp=sharing) of my application prototype. This was the 1st application i had made, i hope i will make it more better.
+**Here i am providing you the [drive link](https://drive.google.com/drive/folders/1lk7IxXvTRhcsiVv5RqBzs6TF0IgeXP5G?usp=sharing) of my application prototype. This was the 1st application i had made, i hope i will make it more better.**
 
 ## Thank you so much
 
