@@ -152,6 +152,11 @@ class _LoginPageState extends State<LoginPage> {
                             if (_formKey.currentState!.validate()) {
                               _formKey.currentState!.save();
                               _signIn();
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                  builder: (context) => MainPage(),
+                                ),
+                              );
                             }
                           },
                           label: const Text(
